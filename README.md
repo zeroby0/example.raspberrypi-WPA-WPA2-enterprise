@@ -1,7 +1,12 @@
 # Connect Raspberrypi to WPA/WPA2-Enterprise
 
-- Tested on IIITB-Milan
-- Add these lines to your `/etc/wpa_supplicant/wpa_supplicant.conf`
+Tested on IIITB-Milan.
+
+## Automatic
+`bash -c "$(curl -sL https://git.io/fjtb1)"`
+
+## Manual
+1. Add these lines to your `/etc/wpa_supplicant/wpa_supplicant.conf`
 ```
 network={
         ssid="IIITB-Milan"
@@ -16,7 +21,7 @@ network={
 }
 ```
 
-- Add these to your `/etc/network/interface`
+2. Add these to your `/etc/network/interface`
 ```
 auto wlan0
 allow-hotplug wlan0
@@ -24,7 +29,7 @@ iface wlan0 inet dhcp
     pre-up wpa_supplicant -B -Dwext -i wlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
     post-down killall -q wpa_supplicant
 ```
-- Restart you pi
+3. Restart you pi
 
 ----
 
