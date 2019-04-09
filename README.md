@@ -1,8 +1,9 @@
 # Connect Raspberrypi to WPA/WPA2-Enterprise
+[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+[![](https://img.shields.io/github/issues/zeroby0/example.raspberrypi-WPA-WPA2-enterprise.svg?color=blue)](https://github.com/zeroby0/example.raspberrypi-WPA-WPA2-enterprise/issues)
 
 Tested on IIITB-Milan.
 
-## Automatic
 `bash -c "$(curl -sL https://git.io/fjtb1)"`
 
 ## Manual
