@@ -6,12 +6,10 @@ IFS=$'\n\t'
 # github.com/zeroby0
 # License: Unlicense
 
-# path_wpa_supplicant="/etc/wpa_supplicant/wpa_supplicant.conf"
-# path_interface="/etc/network/interface"
-path_wpa_supplicant="./wpa.c"
-path_interface="./in.c"
+path_wpa_supplicant="/etc/wpa_supplicant/wpa_supplicant.conf"
+path_interface="/etc/network/interface"
 
-dir_backup="./tmp-backup"
+dir_backup="$PWD/tmp-backup"
 
 path_backup_wpa_supplicant="$dir_backup/wpa_supplicant.conf"
 path_backup_interface="$dir_backup/interface"
@@ -24,7 +22,7 @@ printf "A backup of the files will be created to '$dir_backup' before any change
 
 
 printf "Enter your credentials.\n"
-printf "If there's a backslash (\\), you need to type four backslashes(\\).\n"
+printf "If there's a backslash (\\), you need to type two backslashes(\\ \\) to escape it.\n"
 read -p "WPA2 SSID: " wpa_ssid
 read -p "Username: " wpa_username
 read -p "Password: " wpa_password
@@ -72,10 +70,8 @@ iface wlan0 inet dhcp
     post-down killall -q wpa_supplicant
 EOM
 
-
 cat $path_wpa_supplicant
-printf "Done. Please check the above text. if everything looks fine, you may restart your pi now.\n"
+printf "\nDone. Please check the above text. if everything looks fine, you may restart your pi now.\n"
 printf "To edit your wpa_supplicant file manually, use vi $path_wpa_supplicant\n"
 
 exit
-
