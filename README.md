@@ -4,7 +4,10 @@
 
 Tested on IIITB-Milan.
 
+`wget https://git.io/fjtb1 -O wpa.sh && bash wpa.sh`  
+or  
 `bash -c "$(curl -sL https://git.io/fjtb1)"`
+
 
 ## Manual
 1. Add these lines to your `/etc/wpa_supplicant/wpa_supplicant.conf`
