@@ -16,14 +16,14 @@ path_backup_interface="$dir_backup/interface"
 
 printf "This script connects your raspberry pi 3B or higher to WPA/WPA2-Enterprise.\n\n"
 printf "Files changed are:\n- "
-printf "/etc/wpa_supplicant/wpa_supplicant.conf\n- "
-printf "/etc/network/interface\n"
+printf "$path_wpa_supplicant\n- "
+printf "$path_interface\n"
 printf "A backup of the files will be created to '$dir_backup' before any changes are made.\n\n"
 
 
 printf "Enter your credentials.\n"
 printf "If there's a backslash (\\), you need to type two backslashes(\\ \\) to escape it.\n"
-read -p "WPA2 SSID: " wpa_ssid
+read -p "SSID: " wpa_ssid
 read -p "Username: " wpa_username
 read -p "Password: " wpa_password
 
@@ -39,12 +39,13 @@ else
 fi
 
 sleep 1 # Optional.
-# This is just to let the user get ready
+# This is just to give the human some time to get ready.
 
 mkdir -p $dir_backup
 cp $path_wpa_supplicant $path_backup_wpa_supplicant
 cp $path_interface $path_backup_interface
 
+# Copying new data to wpa_supplicant
 cat >> $path_wpa_supplicant <<- EOM
 
 network={
@@ -60,7 +61,7 @@ network={
 }
 EOM
 
-
+# Copying new data to interface
 cat >> $path_interface <<- EOM
 
 auto wlan0
